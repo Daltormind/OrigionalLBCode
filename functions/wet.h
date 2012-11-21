@@ -178,6 +178,7 @@ class wet
 	
 	double energy_n_old, kin_old; //dissipation()
 	
+    double  Oh,we,w,Re,vg,mo,stg,vl,stl; //Quantities used in Dimensionless num
 	
 	double RXcm, RXcmOld;		//Center of mass of fluid f and the same "old" variable along x, in ARolling()
 	double RZcm;				//Center of mass of fluid f along z, in ARolling()
@@ -299,7 +300,7 @@ class wet
 	void exchangeChemPot(void);
 	void LGConfigRev(void);
 	void exchangeDensities_ffgg(void);
-
+    void Dimensionlessnum(void);
 	public:
 		
 		int rank;

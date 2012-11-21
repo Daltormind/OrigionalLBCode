@@ -73,9 +73,9 @@ void wet::LGConfig(void)
 	{
 		n[k] = 1.0;
 		p[k] = -1.0;
-		uxs[k] = initUX;
-		uys[k] = initUY; 
-		uzs[k] = initUZ;	  
+		uxs[k] =0.0;//initUX;
+		uys[k] =0.0;// initUY;
+		uzs[k] =0.0;// initUZ;
 	} 
 	//cout << "Process " << rank <<": LG Config check 7 " << endl;
     //cout << p[k] << endl;

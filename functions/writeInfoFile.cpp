@@ -17,15 +17,15 @@ void wet::writeInfoFile(void)
 		
 		
 		file5 << "Simulation settings " << endl;
-		file5 << " " << endl; 
+		file5 << " " << endl;
 		file5 << "equilfirst? " << equilfirst << endl;
 		file5 << "velocityprofile? " << velocityprofile << endl;
 		file5 << "duplicationtype " << duplicationtype  << endl;
-		file5 << " " << endl; 
+		file5 << " " << endl;
 		
-		file5 << "Simulation parameters " << endl; 
-		file5 << " " << endl; 
-		file5 << "dimensions " << dimensions << endl;  
+		file5 << "Simulation parameters " << endl;
+		file5 << " " << endl;
+		file5 << "dimensions " << dimensions << endl;
 		file5 << "LX " << LXc << endl;   //Lisa: LXc is the constant value that is not to be changed. LX is changed for equilibration purposes
 		file5 << "LY " << LY << endl;
 		file5 << "LZ " << LZ << endl;
@@ -47,10 +47,10 @@ void wet::writeInfoFile(void)
 		file5 << "p_thresh " << p_thresh <<" p_thresh_natural " << tanh(1.0)<< endl;
 		file5 << "  " << endl;
 		
-		file5 << "Solid parameters " << endl; 
-		file5 << " " << endl; 
-		file5 << "geometry " << geometry << endl; 
-		file5 << "Dx " << Dx << endl;   
+		file5 << "Solid parameters " << endl;
+		file5 << " " << endl;
+		file5 << "geometry " << geometry << endl;
+		file5 << "Dx " << Dx << endl;
 		file5 << "Dy " << Dy << endl;
 		file5 << "Dh " << Dh << endl;
 		file5 << "PeriodX " << PeriodX  << endl;
@@ -60,10 +60,21 @@ void wet::writeInfoFile(void)
         file5 << "Py "  <<Py << endl;
 		file5 << "gapWidth "  <<endl;
         file5 << "  " << endl;
+        
+        file5 << "Calculated Experimental Touch parameters" << endl;
+        file5 << "Surface tension Sl " << stl*mo/(dt*dt) << endl;
+        file5 << "Surafce tension lg " << sqrt(8.0*kappa_p/A)*mo/(dt*dt) << endl;
+        file5 << "Surface Tension gas solid " << stg*mo/(dt*dt) << endl;
+        file5 << "Liquid Viscosity " << vl*c*c*dt << endl;
+        file5 << "Gas viscosity " << vg*c*c*dt << endl;
+        file5 << "Reynolds number " << Re << endl;
+        file5 << "Weber number " << we << endl;
+        file5 << "Oh number " << Oh << endl;
+        file5 << "wetting potential " << w << endl << endl;
 		
-		file5 << "Drop parameters " << endl; 
-		file5 << " " << endl; 
-		file5 << "dropletR " << dropletR << endl;  
+		file5 << "Drop parameters " << endl;
+		file5 << " " << endl;
+		file5 << "dropletR " << dropletR << endl;
 		file5 << "dropletCenterX " << dropletCenterX  << endl;
 		file5 << "dropletCenterY " << dropletCenterY  << endl;
 		file5 << "dropletCenterZ " << dropletCenterZ  << endl;
@@ -71,50 +82,49 @@ void wet::writeInfoFile(void)
 		file5 << "  " << endl;
 		file5 << " ---------------------------------------- " << endl;
 		
-		file5 << "Calculated quantities" << endl; 
-		file5 << " " << endl; 
-		file5 << "Interface width = sqrt(8*kappa/A) " << sqrt(8.0*kappa_p/A) << endl;  
-		file5 << "Surface tension = sqrt(8/9*kappa*A) " << sqrt(8.0/9.0*kappa_p*A) << endl; 
-		file5 << "CB angle " << teta_CB*180.0/M_PI << endl; 
+		file5 << "Calculated quantities" << endl;
+		file5 << " " << endl;
+		file5 << "Interface width = sqrt(8*kappa/A) " << sqrt(8.0*kappa_p/A) << endl;
+		file5 << "Surface tension = sqrt(8/9*kappa*A) " << sqrt(8.0/9.0*kappa_p*A) << endl;
+		file5 << "CB angle " << teta_CB*180.0/M_PI << endl;
 		if (teta_CB_fix != 0) {
-			file5 << "which was fixed externally " << endl; 
+			file5 << "which was fixed externally " << endl;
 		}
 		file5 << "Area fraction " << areaFrac << endl;
-		file5 << " " << endl; 
+		file5 << " " << endl;
 	}
 	
 	if (t==equilTime-1 && rank==ROOT){
 		file5.precision(12);
-		file5 << "BEFORE drop duplication, t = " << t << endl; 
-		file5 << "totalF      ( .., _n) " << energy  << "  " << energy_n<< endl;  
-		file5 << "bulkF       ( .., _n) " << bulkE   << "  " << bulkE_n << endl; 
-		file5 << "surfaceF    ( .., _n) " << surfaceE << "  " << surfaceE_n << endl; 
-		file5 << "interfaceF  ( .., _n) " << interfaceE << "  " << interfaceE_n<< endl; 
-		file5 << "length of CL ( .., _n) "<< clLength << "  " << clLength_n << endl; 
-		file5 << "contact area " << surfArea << endl; 		file5 << " " << endl; 
+		file5 << "BEFORE drop duplication, t = " << t << endl;
+		file5 << "totalF      ( .., _n) " << energy  << "  " << energy_n<< endl;
+		file5 << "bulkF       ( .., _n) " << bulkE   << "  " << bulkE_n << endl;
+		file5 << "surfaceF    ( .., _n) " << surfaceE << "  " << surfaceE_n << endl;
+		file5 << "interfaceF  ( .., _n) " << interfaceE << "  " << interfaceE_n<< endl;
+		file5 << "length of CL ( .., _n) "<< clLength << "  " << clLength_n << endl;
+		file5 << "contact area " << surfArea << endl; 		file5 << " " << endl;
 	}
 	if (t==equilTime && rank==ROOT){
 		file5.precision(12);
 		//file5 << "AFTER drop duplication, t = " << t << endl;
-		file5 << "totalF      ( .., _n) " << energy  << "  " << energy_n<< endl;  
-		file5 << "bulkF       ( .., _n) " << bulkE   << "  " << bulkE_n << endl; 
-		file5 << "surfaceF    ( .., _n) " << surfaceE << "  " << surfaceE_n << endl; 
-		file5 << "interfaceF  ( .., _n) " << interfaceE << "  " << interfaceE_n<< endl; 
-		file5 << "length of CL ( .., _n) "<< clLength << "  " << clLength_n << endl; 
-		file5 << "contact area " << surfArea << endl; 
-		file5 << " " << endl; 
+		file5 << "totalF      ( .., _n) " << energy  << "  " << energy_n<< endl;
+		file5 << "bulkF       ( .., _n) " << bulkE   << "  " << bulkE_n << endl;
+		file5 << "surfaceF    ( .., _n) " << surfaceE << "  " << surfaceE_n << endl;
+		file5 << "interfaceF  ( .., _n) " << interfaceE << "  " << interfaceE_n<< endl;
+		file5 << "length of CL ( .., _n) "<< clLength << "  " << clLength_n << endl;
+		file5 << "contact area " << surfArea << endl;
+		file5 << " " << endl;
 	}
 	
 	/*if (t>equilTime && detachflag == 1 && rank==ROOT){
-		file5.precision(12);
-		file5 << "--- DROP DETACHED! --- t  = " << t << endl; 
-		file5 << "totalF      ( .., _n) " << energy  << "  " << energy_n<< endl;  
-		file5 << "bulkF       ( .., _n) " << bulkE   << "  " << bulkE_n << endl; 
-		file5 << "surfaceF    ( .., _n) " << surfaceE << "  " << surfaceE_n << endl; 
-		file5 << "interfaceF  ( .., _n) " << interfaceE << "  " << interfaceE_n<< endl; 
-		file5 << "length of CL ( .., _n) "<< clLength << "  " << clLength_n << endl; 
-		file5 << "contact area " << surfArea << endl; 
-	}*/
+     file5.precision(12);
+     file5 << "--- DROP DETACHED! --- t  = " << t << endl;
+     file5 << "totalF      ( .., _n) " << energy  << "  " << energy_n<< endl;
+     file5 << "bulkF       ( .., _n) " << bulkE   << "  " << bulkE_n << endl;
+     file5 << "surfaceF    ( .., _n) " << surfaceE << "  " << surfaceE_n << endl;
+     file5 << "interfaceF  ( .., _n) " << interfaceE << "  " << interfaceE_n<< endl;
+     file5 << "length of CL ( .., _n) "<< clLength << "  " << clLength_n << endl;
+     file5 << "contact area " << surfArea << endl;
+     }*/
 	file5.close();	
 }
-

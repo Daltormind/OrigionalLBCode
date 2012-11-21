@@ -29,7 +29,10 @@ void wet::initialise(void)
 	
 	double alpha=acos(sin(teta1)*sin(teta1));
 	phi11 = -2.0*sign(M_PI/2.0L-teta1)*sqrt(A/2/kappa_p)*sqrt(cos(alpha/3)*(1-cos(alpha/3)));  
-	alpha=acos(sin(teta2)*sin(teta2));
+	cout << "sign " << sign(M_PI/2.0L-teta1) << endl;
+    cout << "phi11 init=" << phi11 << endl;
+    cout << "alpha=" << alpha << endl;
+    alpha=acos(sin(teta2)*sin(teta2));
 	phi12 = -2.0*sign(M_PI/2.0L-teta2)*sqrt(A/2/kappa_p)*sqrt(cos(alpha/3)*(1-cos(alpha/3))); 
 	
 	p_thresh_n = tanh(1.0);
@@ -61,7 +64,7 @@ void wet::initialise(void)
 	cout << "Process " << rank << ": k1 = " << k1 << endl;
 	cout << "Process " << rank << ": k2 = " << k2 << endl;
 
-	dx = 1.0; dt = 1.0;		//initialization of step and time step lattice, used in equilibrium function calculation, in equilibrium()
+	dx = 1.0; dt = 1.0 , mo=1.0;		//initialization of step and time step lattice, used in equilibrium function calculation, in equilibrium()
 	c = dx/dt; c2 = c*c;		//velocity and its square, used in equilibrium function calculation, in equilibrium()
 
 	z1=1.0/(6*c);			//Costant used in equilibrium function calculation, in equilibrium()
@@ -355,7 +358,8 @@ void wet::initialise(void)
 	
 	makematrix();
 	
-	if (afterequilflag == false) writeInfoFile();
+    Dimensionlessnum();
+    writeInfoFile();
 
 	/*if(afterequilflag == true){
 		for(k = k1; k < k2; k++)

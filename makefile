@@ -1,6 +1,6 @@
 COMPILER = openmpic++
 
-OBJFUNC = costruct.o ReadInput.o distruct.o computeCoordinate.o initialiseSurface.o LGConfig.o relabel.o leakSearch.o equilibrium.o sign.o initialise.o computeMomenta.o ARolling.o densitiesAtSolidBoundaries.o computeFreeEnergy.o invComputeCoordinate.o collision.o writeDensityFile.o  saveFiles.o propagation.o applyBoundaryConditions.o LBAlgorithm.o makematrix.o commReadData.o exchangeMask.o exchangePhi.o generateGlobalMask.o generatePhiGlobal.o exchangeDensities.o String.o writeZPlanXVelocityFile.o duplicateDrop1.o duplicateDrop2.o generateNGlobal.o generateGlobal.o duplicateArray.o duplicateArray_int.o computeContactArea.o writeInfoFile.o writeJumpFile.o initialiseSurfaceLater.o computeDissipation.o writeDissipationFile.o exchangeVelocities.o exchangeChemPot.o LGConfigRev.o exchangeDensities_ffgg.o
+OBJFUNC = costruct.o ReadInput.o distruct.o computeCoordinate.o initialiseSurface.o LGConfig.o relabel.o leakSearch.o equilibrium.o sign.o initialise.o computeMomenta.o ARolling.o densitiesAtSolidBoundaries.o computeFreeEnergy.o invComputeCoordinate.o collision.o writeDensityFile.o  saveFiles.o propagation.o applyBoundaryConditions.o LBAlgorithm.o makematrix.o commReadData.o exchangeMask.o exchangePhi.o generateGlobalMask.o generatePhiGlobal.o exchangeDensities.o String.o writeZPlanXVelocityFile.o duplicateDrop1.o duplicateDrop2.o generateNGlobal.o generateGlobal.o duplicateArray.o duplicateArray_int.o computeContactArea.o writeInfoFile.o writeJumpFile.o initialiseSurfaceLater.o computeDissipation.o writeDissipationFile.o exchangeVelocities.o exchangeChemPot.o LGConfigRev.o exchangeDensities_ffgg.o Dimensionlessnum.o
 
 
 main: $(OBJFUNC) ./functions/main.cpp 
@@ -147,3 +147,6 @@ LGConfigRev.o: ./functions/LGConfigRev.cpp
 
 exchangeDensities_ffgg.o: ./functions/exchangeDensities_ffgg.cpp
 	$(COMPILER) -c ./functions/exchangeDensities_ffgg.cpp
+
+Dimensionlessnum.o: ./functions/Dimensionlessnum.cpp
+	$(COMPILER) -c ./functions/Dimensionlessnum.cpp

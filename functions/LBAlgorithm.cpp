@@ -34,7 +34,7 @@ void wet::LBAlgorithm(int startStep, int runStep)
 			surfaceE_n = 0.0;
 		
 		}
-		
+        
 		//cout << "Process " << rank << ": , t = " << t << " LBAlgorithm check 1, " << "uzs[k1] "<< uxs[k1] << endl;
 		
 		//cout << "Process " << rank << ": , t = " << t << " LBAlgorithm check 1, ff0[k1+Dh] "<< ff0[k1+Dh] << " , ff0[k1+Dh+LY*LZ] "<< ff0[k1+Dh+LY*LZ] << " , ff0[k1+Dh+2*LY*LZ] "<< ff0[k1+Dh+2*LY*LZ]<< endl;		

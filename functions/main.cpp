@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	wet drop;
 	cout << " --- Starting LB Algorithm ---" << endl;
 	
-		
+    cout << drop.nbEqStep << endl;
 		//cout << "--- Process " << drop.rank <<": nbEqStep "<< drop.nbEqStep << endl;
 		drop.LBAlgorithm(0,drop.nbEqStep);
 	
