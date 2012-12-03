@@ -7,10 +7,11 @@
 
 void wet::writeInfoFile(void)
 {
-    char filenamei[50];
-    snprintf(filenamei,50, "./uxs%.3frat%.3foff%.0f/info.dat",initUX,dropletR/Dx,dropletCenterY-Px-Dx/2);
-	String fileName5(filenamei);
-	ofstream file5(fileName5.get(), ios::app);
+    char filenameic[10];
+    string filenamei;
+    snprintf(filenameic,10, "/info.dat");
+	filenamei=folder+filenameic;
+	ofstream file5(filenamei.c_str(), ios::app);
 	
 	if (t==0 && rank==ROOT){
 		file5.precision(4);

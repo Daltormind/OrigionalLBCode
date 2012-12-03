@@ -12,10 +12,12 @@ void wet::saveFiles(void)
 	if (rank == ROOT){
 		if(t%(infoStep) == 0){
 			{
-                char filenameE[50];
-                snprintf(filenameE,50, "./uxs%.3frat%.3foff%.0f/energy.dat",initUX,dropletR/Dx,dropletCenterY-Px-Dx/2);
-				ofstream file20;
-				file20.open(filenameE, ios::app);
+                char filenameE1[11];
+                string filenameE;
+                snprintf(filenameE1,11, "/energy.dat");
+				filenameE=folder+filenameE1;
+                ofstream file20;
+				file20.open(filenameE.c_str(), ios::app);
 				file20.precision(12);
 				file20 << t << " " << energy << " " << bulkE<< " " << interfaceE << " " << surfaceE << "      " << energy_n << " " << bulkE_n << " " << interfaceE_n << " " << surfaceE_n << "      " << kin << " " << kin_CM <<  endl;   
 				file20.close();

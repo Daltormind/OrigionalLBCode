@@ -11,11 +11,15 @@ void wet::writeDensityFile(void)
 	{
 		int i, j, h;	
 
-		char filename[50];
-		sprintf(filename, "./uxs%.3frat%.3foff%.0f/dd%ld.m",initUX,dropletR/Dx,dropletCenterY-Px-Dx/2, t);			//Create a name for file that contain data
+		char filename1[20];
+		string filename;
+        
+        snprintf(filename1,20,"/dd%ld.m",t);			//Create a name for file that contain data
 		//sprintf(filename, "./dd%ld.m", t);
 		
-		ofstream file(filename);
+        filename=folder+filename1;
+        
+		ofstream file(filename.c_str());
 		file.precision(4);
 		for( h = 0 ; h < LZ ; h++) 
 		{   

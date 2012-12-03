@@ -360,7 +360,7 @@ void wet::initialise(void)
 	
     Dimensionlessnum();
     writeInfoFile();
-
+    writehandlefile();
 	/*if(afterequilflag == true){
 		for(k = k1; k < k2; k++)
 		{

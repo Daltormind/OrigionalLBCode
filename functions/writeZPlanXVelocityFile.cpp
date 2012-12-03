@@ -21,9 +21,13 @@ void wet::writeZPlanXVelocityFile(const int iz)
 
 	if (rank == ROOT) {
 		
-		char filename[50];
-		snprintf(filename,50, "./uxs%.3frat%.3foff%.0f/duxZ%dt%ld.m",initUX,dropletR/Dx,dropletCenterY-Px-Dx/2, iz,t);
-		ofstream file(filename);
+		char filenamec[20];
+		string filename;
+        
+        snprintf(filenamec,20, "/duxZ%dt%ld.m" ,iz,t);
+		filename=folder+filenamec;
+        
+        ofstream file(filename.c_str());
 		
 		file.precision(4);
 		file << "uxZ"<< iz << "t" << t << "=[" << endl;
@@ -88,9 +92,11 @@ void wet::writeZPlanXVelocityFile(const int iz)
 
 	if (rank == ROOT) {
 		
-		char filename[50];
-		snprintf(filename,50, "./uxs%.3frat%.3foff%.0f/duyZ%dt%ld.m",initUX,dropletR/Dx,dropletCenterY-Px-Dx/2, iz,t);
-		ofstream file(filename);
+		char filename[20];
+		snprintf(filename,20, "/duyZ%dt%ld.m", iz,t);
+		string filename1;
+        filename1=folder+filename;
+        ofstream file(filename1.c_str());
 		file.precision(4);
 		file << "uyZ"<< iz << "t" << t << "=[" << endl;
 

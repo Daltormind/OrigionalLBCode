@@ -48,7 +48,11 @@ int wet::ReadInput(void)
 	inputFile >> A >> B >> gama >> endOfLine;	if (rank==ROOT) cout << "A, B, gama " << A << " " << B << " " << gama << endl;
 	inputFile >> G[0] >> G[1] >> G[2] >> endOfLine; if (rank==ROOT) cout << "G " << G[0] << " " << G[1] << " " << G[2] << endl;
 	inputFile >> p_thresh  >> endOfLine;		if (rank==ROOT) cout << "p_thresh " << p_thresh << endl;
-	inputFile.close();
+	inputFile >> folder >> endOfLine;           if (rank==ROOT) cout << "Folder name is " << folder << endl;
+    
+    
+    
+    inputFile.close();
 	tetac = tetac/180.0*M_PI; // Conversion from deg to rad
 	teta2 = teta2/180.0*M_PI; // Conversion from deg to rad
 	//cout << "teta_CB_fix deg" << teta_CB_fix << endl;

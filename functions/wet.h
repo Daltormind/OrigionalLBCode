@@ -45,6 +45,7 @@ class wet
 	//bool equilfirst;		//two drops in the first place, or one drop that is equilibrated and then duplicated, settings.par
 	bool velocityprofile;
 	
+    string folder;
 	
 	int dimensions;			//quasi-2d or 3d, defined in wet.par
 	int LX, LY, LZ, LXc;			//Number of lattice points, defined in wet.par
@@ -178,7 +179,7 @@ class wet
 	
 	double energy_n_old, kin_old; //dissipation()
 	
-    double  Oh,we,w,Re,vg,mo,stg,vl,stl; //Quantities used in Dimensionless num
+    double  Oh,we,w,Re,vg,mo,stg,vl,stl,Mo,Pe; //Quantities used in Dimensionless num
 	
 	double RXcm, RXcmOld;		//Center of mass of fluid f and the same "old" variable along x, in ARolling()
 	double RZcm;				//Center of mass of fluid f along z, in ARolling()
@@ -301,7 +302,12 @@ class wet
 	void LGConfigRev(void);
 	void exchangeDensities_ffgg(void);
     void Dimensionlessnum(void);
-	public:
+	void writehandlefile(void);
+
+
+
+
+        public:
 		
 		int rank;
 		int equilTime;

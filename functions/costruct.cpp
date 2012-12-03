@@ -35,14 +35,17 @@ wet::wet(void)
     if(rank==ROOT)
 	{
 		
-        char command[50];
-        snprintf(command, 50,"mkdir uxs%.3frat%.3foff%.0f", initUX, dropletR/Dx, dropletCenterY-Px-Dx/2);
-        
+        string command="mkdir " + folder;
+        //snprintf(command, 56,"mkdir " folder);
         cout <<"String command is equal to " << command << endl;
         
+        //char * commandc;
+        //commandc=command.c_str();
+        
+        //cout << "Commandc= " << commandc << endl;
         
         //system("rm -r densitydata");
-		system(command);		//create a directory where store data
+		system(command.c_str());		//create a directory where store data
 		//system("rm *.dat");
 		
 
