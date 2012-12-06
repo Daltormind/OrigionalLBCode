@@ -22,7 +22,7 @@ void wet::initialise(void)
 	
 	
 		
-		LX = LXc;
+		
 		teta1 = tetac;
 	
 	

@@ -7,7 +7,6 @@
 #include <cmath>
 #include <cstdlib>
 #include <mpi.h>
-#include "String.hh"
 #include <string>
 #include <sstream>
 //#include "RT_Timer.hh"
@@ -67,7 +66,7 @@ class wet
 	char geometry[15];  //Substrate geometry, defined in substrate.par
 	int Dx, Dy;			//Dimension of a reactangular post (in lattice points), defined in substrate.par
  	int Dh;				//Height of posts or height of floor (in lattice points),  defined in substrate.par
-    int Px , Py ;       // X and Y Position of thread
+    int Px , Py, Pz  ;       // X and Y Position of thread
  	int PeriodX, PeriodY;			//Period of posts (<Dx and <Dy) (in lattice points), defined in substrate.par
 	int PostSymm; 		//Posts with gap at LX/2 (0) or with post (1)?, defined in substrate.par and used in initialiseSurface()
 	

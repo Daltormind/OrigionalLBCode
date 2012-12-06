@@ -52,13 +52,28 @@ void wet::LGConfig(void)
 
 	computeCoordinate(k);
 	
-	
+	if (dropletR!=-1) {
+        
+    
 		
-	
-	if ((xk-dropletCenterX)*(xk-dropletCenterX)+(yk-dropletCenterY)*(yk-dropletCenterY)<=dropletR*dropletR) {
-        kindN=1;
+        if (dimensions==3)
+            {
+            if ((xk-dropletCenterX)*(xk-dropletCenterX)+(yk-dropletCenterY)*(yk-dropletCenterY)+(zk-dropletCenterZ)*(zk-dropletCenterZ)<=dropletR*dropletR)
+                    {
+                    kindN=1;
+                    }
+            }
+    
+    if (dimensions==2)
+        {
+        if ((xk-dropletCenterX)*(xk-dropletCenterX)+(yk-dropletCenterY)*(yk-dropletCenterY)<=dropletR*dropletR)
+            {
+                kindN=1;
+            }
+    
+        }
+        
     }
-	
 
 	if(kindN==1 )
 	{

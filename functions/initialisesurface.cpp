@@ -8,8 +8,24 @@ using namespace std;
 void wet::initialiseSurface(void)
 {
 	computeCoordinate(k);
-	
-	if (xk>Px and xk<Px+Dx and yk>Py and yk<Py+Dy)
-    {mask[k]=28;}
-}	
+	if( dimensions==2)
+    {
+        if (xk>Px and xk<Px+Dx and yk>Py and yk<Py+Dy)
+        {mask[k]=28;}
+    }
+
+
+    if( dimensions==3)
+    {
+        if (xk>Px and xk<Px+Dx and yk>Py and yk<Py+Dy and zk>Pz and zk<Pz+Dh)
+        {mask[k]=28;}
+        
+        
+    }
+
+
+
+
+
+}
 

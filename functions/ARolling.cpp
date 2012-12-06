@@ -164,8 +164,11 @@ void wet::ARolling(void)
 		
 		eccentricity = ECCX/ECCZ;
 		
-		String fileName3("TotalMomenta.dat");
-		ofstream file3(fileName3.get(), ios::app);
+		char filenameic[20];
+        string filenamei;
+        snprintf(filenameic,20, "/totalmomenta.dat");
+        filenamei=folder+filenameic;
+		ofstream file3(filenamei.c_str(), ios::app);
 		file3.precision(7);
 		//file3<< t <<" " << RXcm<<" "<<RVXcm<<" "<<RXcm1+0.4244132*dropletR*sqrt2 <<" "<<RVXcm1<<" "<<RVZcm<<" "<< ECCX << " "<<kin<<" "<<" "<<kin_CM<<endl; 
 		file3<< t <<" "<< kin_CM << " "<< surfArea <<"     " << RXcm<<" "<<RVXcm<<" "<<RZcm<<" "<< RVZcm << "     " << eccentricity <<" "<<kinL<<" "<<kin_CM<< " " << RNtot  << "      " << vx_sq << " " << vz_sq <<"      " << kinG << " " << RNtot_gas << "   " << vmax << endl; 
