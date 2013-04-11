@@ -6,7 +6,7 @@
 
 void wet::LBAlgorithm(int startStep, int runStep)
 {	
-	/*
+	
 	cout << "- in LBAlgorithm ------------ " <<endl;
 	cout << "runStep " << runStep << endl;
 	cout << "nbEqStep " << nbEqStep << endl;
@@ -14,12 +14,14 @@ void wet::LBAlgorithm(int startStep, int runStep)
 	cout << "teta1 " << teta1 << endl;
 	cout << "tauliquid " << tauliquid << endl;
 	cout << "----------------------------- " <<endl;
-	*/
+	
 	
 	//cout << "Process " << rank << ": LBAlgorithm check 0" << endl;
 	
-    for(t = startStep; t <= runStep; t++)
+    //for(t = startStep; t <= runStep; t++)
+    do
 	{		
+		
 		//cout << "Process " << rank << ": , t = " << t << " LBAlgorithm check 1" << endl;
 		if (t%infoStep==0)
 		{
@@ -78,6 +80,12 @@ void wet::LBAlgorithm(int startStep, int runStep)
 		generatePhiGlobal();
 		//cout << "Process " << rank << ": , t = " << t << " LBAlgorithm check 8, " << "p[k1] "<< p[k1] << endl;
 		
+		cout << "Got to just before velav rank =" << rank << endl;
+		
+		
+		velav();
+		
+		cout << "Got to just agter velav rank =" << rank << endl;
 		if(t%infoStep==0) {
 			ARolling();
 			computeContactArea();
@@ -114,6 +122,9 @@ void wet::LBAlgorithm(int startStep, int runStep)
 		 */
 		//cout << "Process " << rank << ": , t = " << t << " LBAlgorithm check 12, " << "uxs[k1] "<< uxs[k1] << endl;
 		//MPI_Barrier(MPI_COMM_WORLD);
-	}
+	t+=1;
+	
+	cout << "co is erqual to" << co << endl;
+	}while(co<10);
 }
 

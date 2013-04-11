@@ -196,6 +196,10 @@ class wet
 	double  force0, force1, force2, force3, force4, force5, force6, forcea, forceb, forcec, forced, forcee, forcef, forceg, forceh, forcei, forcej, forcek, forcel;
 	//double gradsq, en;		//square of density gradient (grad(p)*grad(p)), and used in computeFreeEnergy()
 	
+	double avx,avy,avz,avxt,avyt,avzt; //average drop velocity
+	
+	int co;//Number of steps with no velocity change
+	
 	double M00[NRATIOFLUID], M01[NRATIOFLUID], M02[NRATIOFLUID], M03[NRATIOFLUID], M04[NRATIOFLUID], M05[NRATIOFLUID], M06[NRATIOFLUID];
 	double M0a[NRATIOFLUID], M0b[NRATIOFLUID], M0c[NRATIOFLUID], M0d[NRATIOFLUID], M0e[NRATIOFLUID], M0f[NRATIOFLUID], M0g[NRATIOFLUID]; 
 	double M0h[NRATIOFLUID], M0i[NRATIOFLUID], M0j[NRATIOFLUID], M0k[NRATIOFLUID], M0l[NRATIOFLUID];
@@ -302,7 +306,7 @@ class wet
 	void exchangeDensities_ffgg(void);
     void Dimensionlessnum(void);
 	void writehandlefile(void);
-
+	void velav(void);
 
 
 

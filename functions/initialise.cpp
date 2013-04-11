@@ -5,6 +5,10 @@
 
 void wet::initialise(void)
 {  
+	
+	
+	
+	
 	long d, u, r, l, q, w;		//Index that works out the neighbours of k {(l,r),(d,u),(q,w)}
 	MPI_Status statusLeft, statusRight;
 
@@ -25,7 +29,10 @@ void wet::initialise(void)
 		
 		teta1 = tetac;
 	
-	
+	co=0;
+	avxt=1;
+	avyt=1;
+	avzt=1;
 	
 	double alpha=acos(sin(teta1)*sin(teta1));
 	phi11 = -2.0*sign(M_PI/2.0L-teta1)*sqrt(A/2/kappa_p)*sqrt(cos(alpha/3)*(1-cos(alpha/3)));  
